@@ -33,7 +33,7 @@ class MessageEventsController < ApplicationController
   def create
     puts params[:message_event].inspect
     Pusher['alm_channel'].trigger('alm_event', params[:message_event])
-    render :text => '', :status => :created
+    render :json => ''
   end
 
 end
