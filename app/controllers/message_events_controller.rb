@@ -1,3 +1,5 @@
+require 'json'
+
 class MessageEventsController < ApplicationController
 
   before_filter :cors_preflight_check
@@ -32,7 +34,8 @@ class MessageEventsController < ApplicationController
 
   def create
     puts params[:message_event].inspect
-    Pusher['alm_channel'].trigger('alm_event', params[:message_event])
+    json = JSON.parse(params[:message_event])
+    Pusher[json['channel']].trigger('alm_event', params[:message_event])
     render :json => ''
   end
 
