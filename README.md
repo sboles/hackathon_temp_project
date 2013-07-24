@@ -1,2 +1,2 @@
-hackathon_temp_project
+Prototyping with pusher
 ======================
